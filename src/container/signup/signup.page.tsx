@@ -40,7 +40,6 @@ const SingupPage = () => {
                 id="email"
                 name="email"
                 autoComplete="email"
-                autoFocus={true}
               />
             </FormControl>
             <FormControl margin="normal" required={true} fullWidth={true}>
