@@ -11,6 +11,8 @@ import React from 'react';
 interface INavProps {
   anchorEl: any;
   openProfileMenu: any;
+  openLoginPage: any;
+  openSignupPage: any;
   closeProfileMenu: any;
 }
 
@@ -49,8 +51,8 @@ const NavBar: React.FunctionComponent<INavProps> = props => {
             open={profileMenu}
             onClose={props.closeProfileMenu}
           >
-            <MenuItem onClick={props.closeProfileMenu}>Login</MenuItem>
-            <MenuItem onClick={props.closeProfileMenu}>Sign up</MenuItem>
+            <MenuItem onClick={props.openLoginPage}>Login</MenuItem>
+            <MenuItem onClick={props.openSignupPage}>Sign up</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>

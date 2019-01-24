@@ -21,13 +21,24 @@ class Nav extends Component<INavProps, INavState> {
     this.setState({ anchorEl: null });
   };
 
+  public openLoginPage = () => {
+    this.props.history.push('/login');
+    this.closeProfileMenu();
+  };
+
+  public openSignupPage = () => {
+    this.props.history.push('/signup');
+    this.closeProfileMenu();
+  };
+
   public render() {
-    console.log('nav index props: ', this.props);
     return (
       <>
         <NavBar
           anchorEl={this.state.anchorEl}
           openProfileMenu={this.openProfileMenu}
+          openLoginPage={this.openLoginPage}
+          openSignupPage={this.openSignupPage}
           closeProfileMenu={this.closeProfileMenu}
         />
       </>
