@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Nav from '../nav';
 import HomePage from './home.page';
 
 interface IState {
@@ -16,6 +17,7 @@ class Home extends Component<IProps, IState> {
   public render() {
     return (
       <>
+        <Nav />
         <HomePage />
       </>
     );
