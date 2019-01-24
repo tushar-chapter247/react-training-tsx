@@ -26,7 +26,7 @@ const SingupPage = () => {
           </Typography>
           <form className="signup-form">
             <FormControl margin="normal" required={true} fullWidth={true}>
-              <InputLabel htmlFor="email">Name</InputLabel>
+              <InputLabel htmlFor="name">Name</InputLabel>
               <Input
                 id="name"
                 name="name"
