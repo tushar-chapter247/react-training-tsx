@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import NavBar from './nav.page';
 
 interface INavState {
   anchorEl: any;
 }
 
-// tslint:disable-next-line:no-empty-interface
-interface INavProps {}
+
+interface INavProps extends RouteComponentProps<any> {}
 
 class Nav extends Component<INavProps, INavState> {
   public state = {
@@ -22,6 +23,7 @@ class Nav extends Component<INavProps, INavState> {
   };
 
   public render() {
+    console.log('nav index props: ', this.props);
     return (
       <>
         <NavBar
@@ -34,4 +36,4 @@ class Nav extends Component<INavProps, INavState> {
   }
 }
 
-export default Nav;
+export default withRouter<INavProps>(Nav);
