@@ -1,0 +1,27 @@
+.signup-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.signup-paper {
+  width: 500px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-avatar {
+  margin: 24px;
+  background-color: #fafdfe;
+}
+
+.signup-form {
+  width: 100%;
+}
+
+.signup-submit {
+  margin-top: 30px;
+}
