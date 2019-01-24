@@ -6,7 +6,6 @@ interface INavState {
   anchorEl: any;
 }
 
-
 interface INavProps extends RouteComponentProps<any> {}
 
 class Nav extends Component<INavProps, INavState> {
