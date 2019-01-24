@@ -12,7 +12,12 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import React from 'react';
 import './login.css';
 
-const LoginPage = () => {
+interface IPropTypes {
+  loginFormRef: any;
+  onLoginIn: any;
+}
+
+const LoginPage = (props: IPropTypes) => {
   return (
     <>
       <div className="login-main">
@@ -24,7 +29,7 @@ const LoginPage = () => {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className="login-form">
+          <form className="login-form" ref={props.loginFormRef}>
             <FormControl margin="normal" required={true} fullWidth={true}>
               <InputLabel htmlFor="email">Email Address</InputLabel>
               <Input
@@ -52,9 +57,10 @@ const LoginPage = () => {
               fullWidth={true}
               variant="contained"
               color="primary"
+              onClick={props.onLoginIn}
               className="login-submit"
             >
-              Sign in
+              Log in
             </Button>
           </form>
         </Paper>
