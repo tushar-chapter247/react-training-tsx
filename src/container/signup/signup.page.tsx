@@ -12,7 +12,12 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import React from 'react';
 import './signup.css';
 
-const SingupPage = () => {
+interface IPropType {
+  signupFormRef: any;
+  onSignup: any;
+}
+
+const SingupPage = (props: IPropType) => {
   return (
     <>
       <div className="signup-main">
@@ -24,7 +29,7 @@ const SingupPage = () => {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <form className="signup-form">
+          <form className="signup-form" ref={props.signupFormRef}>
             <FormControl margin="normal" required={true} fullWidth={true}>
               <InputLabel htmlFor="name">Name</InputLabel>
               <Input
@@ -36,11 +41,7 @@ const SingupPage = () => {
             </FormControl>
             <FormControl margin="normal" required={true} fullWidth={true}>
               <InputLabel htmlFor="email">Email Address</InputLabel>
-              <Input
-                id="email"
-                name="email"
-                autoComplete="email"
-              />
+              <Input id="email" name="email" autoComplete="email" />
             </FormControl>
             <FormControl margin="normal" required={true} fullWidth={true}>
               <InputLabel htmlFor="password">Password</InputLabel>
@@ -60,6 +61,7 @@ const SingupPage = () => {
               fullWidth={true}
               variant="contained"
               color="primary"
+              onClick={props.onSignup}
               className="login-submit"
             >
               Sign up
