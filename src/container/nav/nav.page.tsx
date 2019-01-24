@@ -49,8 +49,8 @@ const NavBar: React.FunctionComponent<INavProps> = props => {
             open={profileMenu}
             onClose={props.closeProfileMenu}
           >
-            <MenuItem onClick={props.closeProfileMenu}>Profile</MenuItem>
-            <MenuItem onClick={props.closeProfileMenu}>My account</MenuItem>
+            <MenuItem onClick={props.closeProfileMenu}>Login</MenuItem>
+            <MenuItem onClick={props.closeProfileMenu}>Sign up</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>

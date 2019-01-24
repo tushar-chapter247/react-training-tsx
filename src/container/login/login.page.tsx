@@ -15,7 +15,7 @@ import './login.css';
 const LoginPage = () => {
   return (
     <>
-      <main className="login-main">
+      <div className="login-main">
         <CssBaseline />
         <Paper className="login-paper">
           <Avatar className="login-avatar">
@@ -58,7 +58,7 @@ const LoginPage = () => {
             </Button>
           </form>
         </Paper>
-      </main>
+      </div>
     </>
   );
 };
