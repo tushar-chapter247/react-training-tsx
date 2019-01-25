@@ -1,6 +1,6 @@
 // reducers index tsx file
 
-import { ADD_ARTICLE } from '../actions/constants/action-types';
+import { ADD_ARTICLE } from '../actions/action-types';
 
 interface IArticles {
   articles: any[];
