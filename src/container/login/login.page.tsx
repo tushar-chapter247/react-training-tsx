@@ -13,8 +13,11 @@ import React from 'react';
 import './login.css';
 
 interface IPropTypes {
+  email: string;
+  password: string;
   loginFormRef: any;
   onLoginIn: any;
+  handleInputs: any;
 }
 
 const LoginPage = (props: IPropTypes) => {
@@ -37,6 +40,8 @@ const LoginPage = (props: IPropTypes) => {
                 name="email"
                 autoComplete="email"
                 autoFocus={true}
+                value={props.email}
+                onChange={props.handleInputs}
               />
             </FormControl>
             <FormControl margin="normal" required={true} fullWidth={true}>
@@ -46,6 +51,8 @@ const LoginPage = (props: IPropTypes) => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={props.password}
+                onChange={props.handleInputs}
               />
             </FormControl>
             <FormControlLabel
