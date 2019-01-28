@@ -1,0 +1,13 @@
+.inline {
+  display: inline;
+}
+
+.listItemAlign {
+  align-items: flex-start;
+}
+
+.root {
+  background-color: #fff;
+  max-width: 360px;
+  width: 100%;
+}
