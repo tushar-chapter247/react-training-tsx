@@ -15,9 +15,13 @@ interface IDispatchFromProps {
 }
 
 interface ILoginProps extends IDispatchFromProps {} // EXTENDS APP PROPS WITH REDUX ACTIONS
+interface ILoginStates {
+  email: string,
+  password: string
+}
 
-class Login extends Component<ILoginProps> {
-  public state: ILogin = {
+class Login extends Component<ILoginProps, ILoginStates | any> {
+  public state = {
     email: '',
     password: '',
   };
