@@ -15,6 +15,7 @@ interface IDispatchFromProps {
 }
 
 interface ILoginProps extends IDispatchFromProps {} // EXTENDS APP PROPS WITH REDUX ACTIONS
+
 interface ILoginStates {
   email: string,
   password: string
