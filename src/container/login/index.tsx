@@ -11,15 +11,15 @@ interface ILogin {
 }
 
 interface IDispatchFromProps {
-  loginActionDispatch: (payload: ILogin) => void
+  loginActionDispatch: (payload: ILogin) => void;
 }
 
-interface ILoginProps extends IDispatchFromProps {}; // EXTENDS APP PROPS WITH REDUX ACTIONS
+interface ILoginProps extends IDispatchFromProps {} // EXTENDS APP PROPS WITH REDUX ACTIONS
 
 class Login extends Component<ILoginProps> {
   public state: ILogin = {
     email: '',
-    password: ''
+    password: '',
   };
 
   private loginFormRef = React.createRef<HTMLFormElement>() || null;
@@ -33,8 +33,15 @@ class Login extends Component<ILoginProps> {
     if (node) {
       if (node.reportValidity()) {
         event.preventDefault();
-        console.log('Login Form is valid! ', this.state.email, this.state.password);
-        this.props.loginActionDispatch({email: this.state.email, password: this.state.password}); // DISPATCH ACTION METHOD WITH PAYLOAD SO TO UPDATE IN STORE.
+        console.log(
+          'Login Form is valid! ',
+          this.state.email,
+          this.state.password,
+        );
+        this.props.loginActionDispatch({
+          email: this.state.email,
+          password: this.state.password,
+        }); // DISPATCH ACTION METHOD WITH PAYLOAD SO TO UPDATE IN STORE.
       }
     }
   };
@@ -58,7 +65,6 @@ class Login extends Component<ILoginProps> {
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchFromProps => ({
   loginActionDispatch: (payload: ILogin) => dispatch(userLogin(payload)), // THIS FUNCTION WILL BE AVAILABLE IN PROPS
 });
-
 
 export default connect<null, IDispatchFromProps, void>(
   null,
