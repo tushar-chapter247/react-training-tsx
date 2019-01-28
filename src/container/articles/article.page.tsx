@@ -13,7 +13,7 @@ const ArticlePage = () => {
       <List className="root">
         <ListItem className="listItemAlign">
           <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+            <Avatar alt="Remy Sharp" src={require('../../assets/images/2.jpeg')} />
           </ListItemAvatar>
           <ListItemText
             primary="Brunch this weekend?"
@@ -33,7 +33,7 @@ const ArticlePage = () => {
         </ListItem>
         <ListItem className="listItemAlign">
           <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+            <Avatar alt="Remy Sharp" src={require('../../assets/images/1.jpeg')} />
           </ListItemAvatar>
           <ListItemText
             primary="Summer BBQ"
@@ -53,7 +53,7 @@ const ArticlePage = () => {
         </ListItem>
         <ListItem className="listItemAlign">
           <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/3.jpg" />
+            <Avatar alt="Remy Sharp" src={require('../../assets/images/2.jpeg')} />
           </ListItemAvatar>
           <ListItemText
             primary="Oui Oui"
