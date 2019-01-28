@@ -13,14 +13,14 @@ interface ILogin {
 
 export const userSignup = (payload: ISignup) => {
   return {
-    payload,
+    signupPayload: payload, // AS MENTIONED IN REDUCERS
     type: USER_SIGNUP,
   };
 };
 
 export const userLogin = (payload: ILogin) => {
   return {
-    payload,
+    logininPayload: payload, // AS MENTIONED IN REDUCERS
     type: USER_LOGIN,
   };
 };
