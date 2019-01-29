@@ -18,7 +18,7 @@ const ArticlePage = (props: IActionPropTypes) => {
         {
           props.articles.length ?
           props.articles.map((k, i) => (
-            <ListItem className="listItemAlign" key={k.id.value}>
+            <ListItem className="listItemAlign" key={k.id.value + i}>
               <ListItemAvatar>
                 <Avatar alt={k.name.first + ' ' + k.name.last} src={k.picture.medium} />
               </ListItemAvatar>
