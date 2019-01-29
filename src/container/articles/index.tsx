@@ -2,7 +2,17 @@ import React, { Component } from 'react';
 import API from '../../shared/api';
 import ArticlePage from './article.page';
 
-class Article extends Component {
+interface IArticlePropTypes {}
+
+interface IStateTypes {
+  articles: any[];
+}
+
+class Article extends Component<IArticlePropTypes, IStateTypes> {
+  public state = {
+    articles: [],
+  };
+
   public componentDidMount = async () => {
     await this.getArticles();
   };
@@ -10,7 +20,8 @@ class Article extends Component {
   public getArticles = async () => {
     try {
       const response = await API.get('/users?page=2');
-      console.log('article response: ', response);
+      console.log('article response: ', response.data.data);
+      this.setState({ articles: response.data.data });
       return;
     } catch (error) {
       console.log('article error ', error);
@@ -20,7 +31,7 @@ class Article extends Component {
   public render() {
     return (
       <>
-        <ArticlePage />
+        <ArticlePage articles={this.state.articles} />
       </>
     );
   }

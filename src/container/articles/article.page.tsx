@@ -7,70 +7,39 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import './article.css';
 
-const ArticlePage = () => {
+interface IActionPropTypes {
+  articles: any[];
+}
+
+const ArticlePage = (props: IActionPropTypes) => {
   return (
     <>
       <List className="root">
-        <ListItem className="listItemAlign">
-          <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src={require('../../assets/images/2.jpeg')} />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Brunch this weekend?"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  component="span"
-                  className="inline"
-                  color="textPrimary"
-                >
-                  Ali Connors
-                </Typography>
-                {" — I'll be in your neighborhood doing errands this…"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <ListItem className="listItemAlign">
-          <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src={require('../../assets/images/1.jpeg')} />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Summer BBQ"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  component="span"
-                  className="inline"
-                  color="textPrimary"
-                >
-                  to Scott, Alex, Jennifer
-                </Typography>
-                {" — Wish I could come, but I'm out of town this…"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <ListItem className="listItemAlign">
-          <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src={require('../../assets/images/2.jpeg')} />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Oui Oui"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  component="span"
-                  className="inline"
-                  color="textPrimary"
-                >
-                  Sandra Adams
-                </Typography>
-                {' — Do you have Paris recommendations? Have you ever…'}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
+        {
+          props.articles.length ?
+          props.articles.map((k, i) => (
+            <ListItem className="listItemAlign" key={k.id}>
+              <ListItemAvatar>
+                <Avatar alt={k.first_name + ' ' + k.last_name} src={k.avatar} />
+              </ListItemAvatar>
+              <ListItemText
+                primary="Article title - Brunch this weekend?"
+                secondary={
+                  <React.Fragment>
+                    <Typography
+                      component="span"
+                      className="inline"
+                      color="textPrimary"
+                    >
+                      {k.first_name} {k.last_name}
+                    </Typography>
+                    {" — Some book title - I'll be in your neighborhood…"}
+                  </React.Fragment>
+                }
+              />
+            </ListItem>
+          )) : null
+        }
       </List>
     </>
   );
