@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import API from '../../shared/api';
+import { addArticle } from '../../store/actions';
 import ArticlePage from './article.page';
 
-interface IArticlePropTypes {}
+interface IArticles {
+  articles: any[];
+}
+
+interface IDispatchFromProps {
+  articleActionDispatch: (payload: IArticles) => void;
+}
+
+interface IArticlePropTypes extends IDispatchFromProps {}
 
 interface IStateTypes {
   articles: any[];
@@ -21,6 +32,7 @@ class Article extends Component<IArticlePropTypes, IStateTypes> {
     try {
       const response = await API.get('/users?page=2');
       console.log('article response: ', response.data.data);
+      this.props.articleActionDispatch(response.data.data); // STORE ALL ARTICLES IN STORE
       this.setState({ articles: response.data.data });
       return;
     } catch (error) {
@@ -37,4 +49,11 @@ class Article extends Component<IArticlePropTypes, IStateTypes> {
   }
 }
 
-export default Article;
+const mapDispatchToProps = (dispatch: Dispatch): IDispatchFromProps => ({
+  articleActionDispatch: (payload: IArticles) => dispatch(addArticle(payload)), // THIS FUNCTION WILL BE AVAILABLE IN PROPS
+});
+
+export default connect<null, IDispatchFromProps, void>(
+  null,
+  mapDispatchToProps,
+)(Article);
