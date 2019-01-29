@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import API from '../../shared/api';
 import { addArticle } from '../../store/actions';
+import Nav from '../nav';
 import ArticlePage from './article.page';
 
 interface IArticles {
@@ -30,9 +31,9 @@ class Article extends Component<IArticlePropTypes, IStateTypes> {
 
   public getArticles = async () => {
     try {
-      const response = await API.get('/users?page=2');
-      console.log('article response: ', response.data.data);
-      this.props.articleActionDispatch(response.data.data); // STORE ALL ARTICLES IN STORE
+      const response = await API.get('/users');
+      const payload: IArticles = { articles: response.data.data }; // CREATE PAYLOAD TO SEND
+      this.props.articleActionDispatch(payload); // STORE ALL ARTICLES IN STORE
       this.setState({ articles: response.data.data });
       return;
     } catch (error) {
@@ -43,6 +44,7 @@ class Article extends Component<IArticlePropTypes, IStateTypes> {
   public render() {
     return (
       <>
+        <Nav />
         <ArticlePage articles={this.state.articles} />
       </>
     );
