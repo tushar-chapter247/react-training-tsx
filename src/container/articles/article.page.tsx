@@ -13,17 +13,17 @@ interface IActionPropTypes {
 
 const ArticlePage = (props: IActionPropTypes) => {
   return (
-    <>
+    <div className="mainroot">
       <List className="root">
         {
           props.articles.length ?
           props.articles.map((k, i) => (
-            <ListItem className="listItemAlign" key={k.id}>
+            <ListItem className="listItemAlign" key={k.id.value}>
               <ListItemAvatar>
-                <Avatar alt={k.first_name + ' ' + k.last_name} src={k.avatar} />
+                <Avatar alt={k.name.first + ' ' + k.name.last} src={k.picture.medium} />
               </ListItemAvatar>
               <ListItemText
-                primary="Article title - Brunch this weekend?"
+                primary={k.name.first.toUpperCase() + ' ' + k.name.last.toUpperCase()}
                 secondary={
                   <React.Fragment>
                     <Typography
@@ -31,9 +31,9 @@ const ArticlePage = (props: IActionPropTypes) => {
                       className="inline"
                       color="textPrimary"
                     >
-                      {k.first_name} {k.last_name}
+                      {k.cell}
                     </Typography>
-                    {" — Some book title - I'll be in your neighborhood…"}
+                    {" — " + k.email}
                   </React.Fragment>
                 }
               />
@@ -41,7 +41,7 @@ const ArticlePage = (props: IActionPropTypes) => {
           )) : null
         }
       </List>
-    </>
+    </div>
   );
 };
 

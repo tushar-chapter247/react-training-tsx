@@ -11,3 +11,9 @@
   max-width: 360px;
   width: 100%;
 }
+
+.mainroot {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
