@@ -16,7 +16,9 @@ interface IActionType extends ISignup, ILogin {
   signupPayload: ISignup;
   logininPayload: ILogin;
   showLoading: boolean;
+  signupResponse: any;
   showSuccessMessage: boolean;
+  signupError: any;
   showErrorMessage: boolean;
 }
 
@@ -27,6 +29,8 @@ const initialState: ISignup | ILogin | IActionType = {
   showErrorMessage: false,
   showLoading: false,
   showSuccessMessage: false,
+  signupError: null,
+  signupResponse: null,
 };
 
 const accountReducer = (state = initialState, action: IActionType) => {
@@ -50,6 +54,22 @@ const accountReducer = (state = initialState, action: IActionType) => {
       return {
         ...state,
         showLoading: true
+      }
+
+    case actions.USER_SIGNUP_SUCCESS:
+      return {
+        ...state,
+        response: action.signupResponse,
+        showLoading: false,
+        showSuccessMessage: true
+      }
+
+    case actions.USER_SIGNUP_FAILURE:
+      return {
+        ...state,
+        error: action.signupError,
+        showErrorMessage: true,
+        showLoading: false,
       }
 
     default:
