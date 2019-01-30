@@ -13,8 +13,12 @@ import React from 'react';
 import './signup.css';
 
 interface IPropType {
+  name: string;
+  email: string;
+  password: string;
   signupFormRef: any;
   onSignup: any;
+  handleInputs: any;
 }
 
 const SingupPage = (props: IPropType) => {
@@ -37,11 +41,20 @@ const SingupPage = (props: IPropType) => {
                 name="name"
                 autoComplete="name"
                 autoFocus={true}
+                value={props.name}
+                onChange={props.handleInputs}
               />
             </FormControl>
             <FormControl margin="normal" required={true} fullWidth={true}>
               <InputLabel htmlFor="email">Email Address</InputLabel>
-              <Input id="email" name="email" autoComplete="email" />
+              <Input
+                id="email"
+                name="email"
+                type="text"
+                autoComplete="email"
+                value={props.email}
+                onChange={props.handleInputs}
+              />
             </FormControl>
             <FormControl margin="normal" required={true} fullWidth={true}>
               <InputLabel htmlFor="password">Password</InputLabel>
@@ -50,6 +63,8 @@ const SingupPage = (props: IPropType) => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={props.password}
+                onChange={props.handleInputs}
               />
             </FormControl>
             <FormControlLabel
