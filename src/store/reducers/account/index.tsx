@@ -15,12 +15,18 @@ interface IActionType extends ISignup, ILogin {
   type: string;
   signupPayload: ISignup;
   logininPayload: ILogin;
+  showLoading: boolean;
+  showSuccessMessage: boolean;
+  showErrorMessage: boolean;
 }
 
-const initialState: ISignup | ILogin = {
+const initialState: ISignup | ILogin | IActionType = {
   email: '',
   name: '',
   password: '',
+  showErrorMessage: false,
+  showLoading: false,
+  showSuccessMessage: false,
 };
 
 const accountReducer = (state = initialState, action: IActionType) => {
@@ -39,6 +45,12 @@ const accountReducer = (state = initialState, action: IActionType) => {
         name: action.signupPayload.name,
         password: action.signupPayload.password,
       };
+    
+    case actions.USER_SIGNUP_REQUEST:
+      return {
+        ...state,
+        showLoading: true
+      }
 
     default:
       return state;
