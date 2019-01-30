@@ -8,12 +8,17 @@ interface ISignup {
   password: string;
 }
 
+interface ILogin {
+  email: string;
+  password: string;
+}
+
 interface IArticles {
   articles: any[];
 }
 
 const rootReducer: Reducer<{
-  accountReducer: ISignup;
+  accountReducer: ILogin | ISignup;
   articleReducer: IArticles;
 }> = combineReducers({
   accountReducer,
