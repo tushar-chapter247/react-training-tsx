@@ -1,4 +1,6 @@
-import { USER_LOGIN, USER_SIGNUP } from '../action-types';
+import { AnyAction } from 'redux';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import * as actions from '../action-types';
 
 interface ISignup {
   name: string;
@@ -11,16 +13,36 @@ interface ILogin {
   password: string;
 }
 
-export const userSignup = (payload: ISignup) => {
-  return {
-    signupPayload: payload, // AS MENTIONED IN REDUCERS
-    type: USER_SIGNUP,
+export const userSignup = (
+  payload: ISignup,
+): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
+  return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
+    return new Promise<void>(resolve => {
+      console.log('action user signup');
+      if (payload) {
+        dispatch({ type: actions.USER_SIGNUP_REQUEST });
+        dispatch(userSignupReq(payload));
+      }
+      resolve();
+    });
+  };
+};
+
+export const userSignupReq = (
+  payload: ISignup,
+): ThunkAction<Promise<void>, {}, {}, AnyAction> => {
+  return async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
+    return new Promise<void>(resolve => {
+      console.log('action user signup req: ', payload);
+      // call signup api here and dispatch actions according to response
+      resolve();
+    });
   };
 };
 
 export const userLogin = (payload: ILogin) => {
   return {
     logininPayload: payload, // AS MENTIONED IN REDUCERS
-    type: USER_LOGIN,
+    type: actions.USER_LOGIN,
   };
 };
