@@ -23,15 +23,11 @@ interface IArticlePropTypes extends IStateToProps, IDispatchFromProps {}
 
 interface IStateTypes {
   articles: any[];
-  file: any;
-  multipleImages: any[];
 }
 
 class Article extends Component<IArticlePropTypes, IStateTypes> {
   public state = {
     articles: [],
-    file: '',
-    multipleImages: [],
   };
 
   public componentDidMount = async () => {
@@ -52,36 +48,11 @@ class Article extends Component<IArticlePropTypes, IStateTypes> {
     }
   };
 
-  public handleFileChange = (event: any) => {
-    const imgs: any[] = [...this.state.multipleImages];
-    imgs.push(URL.createObjectURL(event.target.files[0]));
-    console.log(event.target.files[0]);
-    this.setState({
-      file: URL.createObjectURL(event.target.files[0]),
-      multipleImages: imgs,
-    });
-  };
-
   public render() {
     return (
       <>
         <Nav />
         <ArticlePage articles={this.props.storeArticles} />
-        <br />
-        <input type="file" onChange={this.handleFileChange} />
-        <h3>Selected image</h3>
-        <img src={this.state.file} />
-        <br />
-        <h3>Gallery</h3>
-        <div>
-          {this.state.multipleImages.length
-            ? this.state.multipleImages.map((k, i) => (
-              <>
-                <img src={k} />
-              </>
-            ))
-            : null}
-        </div>
       </>
     );
   }
