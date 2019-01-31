@@ -13,6 +13,10 @@ class Nav extends Component<INavProps, INavState> {
     anchorEl: null,
   };
 
+  public openProductPage = () => {
+    this.props.history.push('/products');
+  }
+
   public openProfileMenu = (event: { currentTarget: any }) => {
     this.setState({ anchorEl: event.currentTarget });
   };
@@ -36,6 +40,7 @@ class Nav extends Component<INavProps, INavState> {
       <>
         <NavBar
           anchorEl={this.state.anchorEl}
+          openProductPage={this.openProductPage}
           openProfileMenu={this.openProfileMenu}
           openLoginPage={this.openLoginPage}
           openSignupPage={this.openSignupPage}
