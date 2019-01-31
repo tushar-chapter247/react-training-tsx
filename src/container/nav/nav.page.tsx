@@ -11,6 +11,7 @@ import React from 'react';
 
 interface INavProps {
   anchorEl: any;
+  goToHomePage: any;
   openProductPage: any;
   openArticlePage: any;
   openProfileMenu: any;
@@ -26,7 +27,7 @@ const NavBar: React.FunctionComponent<INavProps> = props => {
     <>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="title" color="inherit">
+          <Typography variant="title" color="inherit" style={{cursor: 'pointer',}} onClick={props.goToHomePage}>
             React Redux
           </Typography>
           <span className="flex-spacer" />
