@@ -13,6 +13,10 @@ class Nav extends Component<INavProps, INavState> {
     anchorEl: null,
   };
 
+  public goToHomePage = () => {
+    this.props.history.push('/');
+  }
+
   public openProductPage = () => {
     this.props.history.push('/products');
   }
@@ -44,6 +48,7 @@ class Nav extends Component<INavProps, INavState> {
       <>
         <NavBar
           anchorEl={this.state.anchorEl}
+          goToHomePage={this.goToHomePage}
           openArticlePage={this.openArticlePage}
           openProductPage={this.openProductPage}
           openProfileMenu={this.openProfileMenu}
