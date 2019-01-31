@@ -12,6 +12,7 @@ import React from 'react';
 interface INavProps {
   anchorEl: any;
   openProductPage: any;
+  openArticlePage: any;
   openProfileMenu: any;
   openLoginPage: any;
   openSignupPage: any;
@@ -29,6 +30,7 @@ const NavBar: React.FunctionComponent<INavProps> = props => {
             React Redux
           </Typography>
           <span className="flex-spacer" />
+          <Button color="inherit" onClick={props.openArticlePage}>Articles</Button>
           <Button color="inherit" onClick={props.openProductPage}>Products</Button>
           <Tooltip title="User Menu" placement="bottom">
             <IconButton
