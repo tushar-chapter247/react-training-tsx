@@ -10,6 +10,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ShareIcon from '@material-ui/icons/Share';
 import React from 'react';
+import UpperCaseFirst from '../../shared/component/uppercase-first';
 import './product-details.css';
 
 interface IPropTypes {
@@ -35,7 +36,7 @@ const ProductDetailsPage = (props: IPropTypes) => {
               <MoreVertIcon />
             </IconButton>
           }
-          title={props.userData && props.userData.name ? props.userData.name.first + ' ' + props.userData.name.last : null}
+          title={props.userData && props.userData.name ? <UpperCaseFirst text={props.userData.name.first + ' ' + props.userData.name.last} /> : null}
           subheader={props.userData && props.userData.email ? props.userData.email : null}
         />
         <CardMedia
